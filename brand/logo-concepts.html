@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DiamondFinish — Logo Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Inter:wght@400;500;600;700&family=Jost:wght@300;400;500;600;700&family=Syncopate:wght@400;700&display=swap">
+<style>
+  :root {
+    --page: #f2f1ed;
+    --card: #ffffff;
+    --ink: #15181e;
+    --muted: #5f6672;
+    --line: #e3e1db;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font: 15px/1.55 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px 72px; }
+
+  /* Sheet header */
+  .sheet-head { padding: 52px 4px 4px; }
+  .kicker { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  h1 { font-size: clamp(28px, 4.2vw, 42px); line-height: 1.12; letter-spacing: -.025em; margin: 10px 0 14px; }
+  .lede { max-width: 760px; margin: 0; color: var(--muted); font-size: 16px; }
+
+  /* Concept card */
+  .concept { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: clamp(18px, 3vw, 32px); margin-top: 28px; }
+  .concept-head { display: grid; grid-template-columns: auto 1fr; column-gap: 14px; row-gap: 4px; align-items: baseline; margin-bottom: 22px; }
+  .num { font-weight: 700; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .concept-head h2 { margin: 0; font-size: 24px; letter-spacing: -.015em; }
+  .tags { grid-column: 2; font-size: 13px; color: var(--muted); font-weight: 500; }
+  .concept-head p { grid-column: 2; margin: 8px 0 0; max-width: 800px; color: #3d434d; text-wrap: pretty; }
+
+  .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; }
+  .tile { position: relative; margin: 0; border-radius: 16px; border: 1px solid var(--line); padding: 44px 28px 30px; display: flex; align-items: center; justify-content: center; min-height: 240px; background: #fff; }
+  .tile .cap { position: absolute; top: 13px; left: 16px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .tile.dark { border-color: transparent; }
+  .tile.dark .cap { color: rgba(255,255,255,.62); }
+  .t-main { grid-column: span 7; }
+  .t-dark { grid-column: span 5; }
+  .t-icons { grid-column: span 5; gap: 26px; flex-wrap: wrap; }
+  .t-palette { grid-column: span 7; flex-direction: column; align-items: stretch; justify-content: flex-end; gap: 16px; }
+  .t-site { grid-column: 1 / -1; padding: 44px 18px 18px; background: #f7f7f5; }
+
+  .lockup { display: block; width: 100%; height: auto; overflow: visible; }
+  .t-main .lockup { max-width: 540px; }
+  .t-dark .lockup { max-width: 400px; }
+
+  /* Icon row */
+  .appicon { width: 104px; height: 104px; border-radius: 24px; display: grid; place-items: center; box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 8px 20px rgba(0,0,0,.10); }
+  .appicon svg { width: 76%; height: 76%; overflow: visible; }
+  .avatar { width: 104px; height: 104px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line); }
+  .avatar svg { width: 70%; height: 70%; }
+  .favs { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  .tab { display: flex; align-items: center; gap: 8px; background: #efeeea; border-radius: 8px 8px 0 0; padding: 7px 12px; font-size: 12px; color: #4a505a; }
+  .tab svg { width: 16px; height: 16px; flex: none; }
+  .favsizes { display: flex; align-items: flex-end; gap: 12px; }
+  .favsizes small { display: block; font-size: 10px; color: var(--muted); text-align: center; margin-top: 3px; }
+
+  /* Palette */
+  .swatches { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+  .sw { border-radius: 12px; overflow: hidden; border: 1px solid rgba(0,0,0,.06); }
+  .sw i { display: block; height: 78px; background: var(--c); }
+  .sw div { padding: 8px 10px 10px; }
+  .sw b { display: block; font-size: 12px; font-weight: 600; }
+  .sw code { font: 500 11px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--muted); }
+  .sw em { display: block; font-style: normal; font-size: 11px; color: var(--muted); }
+  .type { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: #3d434d; }
+  .type b { font-weight: 600; color: var(--ink); }
+
+  /* Mini website preview */
+  .mock { width: 100%; border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #e3e1db; box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 14px 34px rgba(0,0,0,.08); }
+  .mock-chrome { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: #ebeae6; border-bottom: 1px solid #dfddd7; }
+  .mock-chrome i { width: 9px; height: 9px; border-radius: 50%; background: #d1cfc9; }
+  .mock-chrome span { margin-left: 10px; font-size: 11px; color: #8a8f98; background: #fff; border-radius: 6px; padding: 2px 12px; }
+  .mock-nav { position: relative; display: flex; align-items: center; gap: 22px; padding: 14px 28px; background: #fff; border-bottom: 1px solid #eee; }
+  .mock-logo { height: 44px; width: auto; flex: none; overflow: visible; }
+  .mock-links { display: flex; gap: 22px; margin-left: auto; font-size: 13px; font-weight: 500; color: #3b4250; }
+  .mock-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 10px; font-weight: 700; font-size: 13px; white-space: nowrap; }
+  .mock-hero { position: relative; overflow: hidden; display: grid; grid-template-columns: 1.25fr 1fr; gap: 32px; padding: 50px 28px 54px; align-items: center; }
+  .mock-hero > * { position: relative; }
+  .mock-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+  .mock-hero h3 { margin: 12px 0 14px; font-size: 46px; line-height: 1.02; }
+  .mock-hero p { margin: 0 0 22px; font-size: 14px; max-width: 440px; }
+  .mock-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+  .mock-svcs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .mock-svc { position: relative; padding: 14px; border-radius: 12px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+  .mock-svc b { position: relative; width: 28px; height: 28px; border-radius: 8px; flex: none; }
+
+  /* Concept 1 site theme: bright, glossy, sapphire. Everything stands on a mirror-gloss floor. */
+  .mock-c1 .mock-btn { background: #1D5BD6; color: #fff; }
+  .mock-c1 .mock-hero { align-items: end; padding-bottom: 72px; background: radial-gradient(55% 80% at 100% 0%, rgba(127,220,246,.30), transparent 70%), linear-gradient(180deg, #F8FBFE 0%, #EEF5FB 100%); color: #0C1A2E; }
+  .mock-c1 .mock-hero::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 72px; background: linear-gradient(180deg, #DDEAF7 0%, #EEF5FB 100%); border-top: 1px solid #CADBEE; }
+  .mock-c1 .mock-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 72px; background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.75) 45%, transparent 60%); }
+  .mock-c1 .mock-sparkles { position: absolute; top: 20px; right: 34px; width: 300px; height: 150px; }
+  .mock-c1 .mock-eyebrow { color: #1D5BD6; }
+  .mock-c1 .mock-hero h3 { font-family: Jost, sans-serif; font-weight: 600; letter-spacing: -.02em; }
+  .mock-c1 .mock-hero h3 em { font-style: normal; background: linear-gradient(90deg, #1D5BD6 20%, #3FA9EA 90%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .mock-c1 .mock-hero p { color: #44546B; }
+  .mock-c1 .ghost { background: #fff; color: #0C1A2E; box-shadow: inset 0 0 0 1.5px #C7D2DE; }
+  .mock-c1 .mock-ctas, .mock-c1 .mock-svcs { -webkit-box-reflect: below 1px linear-gradient(transparent 58%, rgba(255,255,255,.34)); }
+  .mock-c1 .mock-svc { background: #fff; color: #0C1A2E; box-shadow: 0 1px 2px rgba(12,26,46,.06), 0 8px 20px rgba(29,91,214,.10); }
+  .mock-c1 .mock-svc b { background: linear-gradient(135deg, #3FA9EA, #1D5BD6); }
+  .mock-c1 .mock-svc b::after { content: ""; position: absolute; inset: 6px; background: #fff; clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); }
+
+  /* Concept 2 site theme: warm terrazzo */
+  .mock-c2 .mock-nav { background: #FBF5EA; border-bottom-color: #EFE4D0; }
+  .mock-c2 .mock-links { color: #2E5A48; }
+  .mock-c2 .mock-btn { background: #D9533D; color: #fff; border-radius: 999px; }
+  .mock-c2 .mock-hero { background: #FBF5EA; color: #1D4D3A; }
+  .mock-c2 .mock-tz { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .mock-c2 .mock-eyebrow { color: #D9533D; }
+  .mock-c2 .mock-hero h3 { font-family: Fraunces, Georgia, serif; font-weight: 800; font-variation-settings: "SOFT" 100, "WONK" 0; letter-spacing: -.025em; }
+  .mock-c2 .mock-hero h3 em { font-style: italic; font-weight: 600; color: #E0604A; }
+  .mock-c2 .mock-hero p { color: #4B6B5D; }
+  .mock-c2 .ghost { background: transparent; color: #1D4D3A; box-shadow: inset 0 0 0 1.5px #1D4D3A; }
+  .mock-c2 .mock-svc { background: #fff; color: #1D4D3A; border-radius: 16px; box-shadow: 0 1px 2px rgba(29,77,58,.06), 0 10px 24px rgba(29,77,58,.10); }
+  .mock-c2 .mock-svc b { width: 24px; height: 24px; border-radius: 0; background: var(--chip); }
+  .mock-c2 .mock-svc:nth-child(1) b { --chip: #EE6C55; clip-path: polygon(18% 8%, 78% 0, 100% 52%, 70% 100%, 10% 84%, 0 40%); }
+  .mock-c2 .mock-svc:nth-child(2) b { --chip: #F4B942; clip-path: polygon(30% 0, 92% 18%, 88% 80%, 42% 100%, 0 64%); }
+  .mock-c2 .mock-svc:nth-child(3) b { --chip: #7CC9AE; clip-path: polygon(8% 22%, 60% 0, 100% 36%, 84% 94%, 24% 100%); }
+  .mock-c2 .mock-svc:nth-child(4) b { --chip: #1D4D3A; clip-path: polygon(0 30%, 44% 0, 100% 20%, 90% 76%, 50% 100%, 6% 82%); }
+
+  /* Concept 3 site theme: black and champagne gold, with a metallic pour behind the hero */
+  .mock-c3 .mock-nav { background: #0F0F11; border-bottom-color: #232327; --c3-word: #fff; --c3-fin: #D9B96E; --c3-rule: #D9B96E;
+    --c3-g1: #FBF0CD; --c3-g2: #F0D796; --c3-g3: #DDBD72; --c3-g4: #C9A457; --c3-g5: #AD8840; --c3-g6: #8C6B2E; }
+  .mock-c3 .mock-links { color: rgba(255,255,255,.78); }
+  .mock-c3 .mock-btn { background: linear-gradient(180deg, #EBD291, #C9A457); color: #17140D; border-radius: 3px; text-transform: uppercase; letter-spacing: .12em; font-size: 11px; }
+  .mock-c3 .mock-hero { background: radial-gradient(55% 85% at 88% 45%, rgba(217,185,110,.12), transparent 70%), #0F0F11; color: #fff; }
+  .mock-c3 .mock-swirl { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .mock-c3 .mock-eyebrow { color: #D9B96E; }
+  .mock-c3 .mock-hero h3 { font-family: Syncopate, sans-serif; font-weight: 700; font-size: 34px; line-height: 1.14; text-transform: uppercase; letter-spacing: 0; }
+  .mock-c3 .mock-hero h3 em { display: block; font-style: normal; background: linear-gradient(180deg, #F6E3A8 15%, #C9A457 85%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .mock-c3 .mock-hero p { color: rgba(255,255,255,.72); }
+  .mock-c3 .ghost { background: transparent; color: #EBD291; box-shadow: inset 0 0 0 1px rgba(217,185,110,.55); }
+  .mock-c3 .mock-svc { background: rgba(15,15,17,.55); color: #fff; border: 1px solid rgba(217,185,110,.28); border-radius: 4px; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+  .mock-c3 .mock-svc b { width: 10px; height: 10px; margin: 0 5px; border-radius: 1px; transform: rotate(45deg); background: linear-gradient(135deg, #F6E3A8, #B08A3E); }
+
+  .sheet-foot { margin-top: 32px; padding: 24px 28px; border-radius: 18px; border: 1px dashed #cfccc4; color: #3d434d; }
+  .sheet-foot h2 { font-size: 16px; margin: 0 0 6px; }
+  .sheet-foot p { margin: 0; }
+
+  @media (max-width: 900px) {
+    .grid > * { grid-column: 1 / -1; }
+    .mock-links { display: none; }
+    .mock-hero { grid-template-columns: 1fr; }
+    .mock-hero h3 { font-size: 36px; }
+    .mock-c3 .mock-hero h3 { font-size: 28px; }
+    .mock-c1 .mock-sparkles { display: none; }
+    .mock-c2 .mock-tz { opacity: .45; }
+    .mock-c3 .mock-swirl { top: auto; height: 55%; opacity: .6; }
+  }
+  @media (max-width: 560px) {
+    .tile { min-height: 0; padding: 40px 18px 24px; }
+    .t-main, .t-dark { min-height: 160px; }
+    .swatches { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .sw div { padding: 8px 6px 9px 8px; }
+    .sw b { font-size: 11.5px; }
+    .mock-nav { padding: 12px 16px; }
+    .mock-nav .mock-btn { display: none; }
+    .mock-logo { height: 38px; }
+    .mock-hero { padding: 36px 18px 40px; }
+    .mock-c1 .mock-hero { padding-bottom: 64px; }
+    .mock-c1 .mock-hero::before, .mock-c1 .mock-hero::after { height: 64px; }
+    .mock-c3 .mock-hero h3 { font-size: 21px; }
+    .mock-c3 .mock-svc { font-size: 10px; letter-spacing: .08em; }
+    .mock-svcs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .mock-svc { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== Shared SVG definitions ===================== -->
+<!-- DEFS START -->
+<svg aria-hidden="true" width="0" height="0" style="position:absolute;overflow:hidden">
+  <defs>
+    <!-- Concept 1: the pavilion is sliced into gloss lines that thin out toward the point -->
+    <clipPath id="c1-gloss">
+      <rect x="0" y="42.5" width="100" height="12.5"/>
+      <rect x="0" y="58.5" width="100" height="9.5"/>
+      <rect x="0" y="71.5" width="100" height="7"/>
+      <rect x="0" y="82" width="100" height="5"/>
+      <rect x="0" y="90.5" width="100" height="5"/>
+    </clipPath>
+    <!-- Concept 2: chips are clipped to the diamond, like a real cut sample -->
+    <clipPath id="c2-clip"><path d="M50 4 L95 50 L50 96 L5 50 Z"/></clipPath>
+    <!-- Concept 2: tileable terrazzo for backgrounds (160 x 160 repeat) -->
+    <pattern id="c2-terrazzo" width="160" height="160" patternUnits="userSpaceOnUse">
+      <path fill="#1D4D3A" d="M-0.5 -10.0 1.4 -5.6 0.4 -1.2 -2.8 -0.9 -7.6 -5.3 -6.2 -8.3ZM-0.5 150.0 1.4 154.4 0.4 158.8 -2.8 159.1 -7.6 154.7 -6.2 151.7ZM159.5 -10.0 161.4 -5.6 160.4 -1.2 157.2 -0.9 152.4 -5.3 153.8 -8.3ZM159.5 150.0 161.4 154.4 160.4 158.8 157.2 159.1 152.4 154.7 153.8 151.7ZM91.1 9.0 90.1 13.1 82.7 13.8 80.9 13.1 78.4 7.6 83.0 6.0 87.8 6.7ZM-2.3 137.3 -3.8 134.1 -2.6 131.5 0.2 130.4 2.9 134.0 1.7 137.7ZM157.7 137.3 156.2 134.1 157.4 131.5 160.2 130.4 162.9 134.0 161.7 137.7ZM13.0 124.6 9.7 125.1 9.1 122.8 9.5 119.9 11.3 119.5 14.0 121.5ZM143.1 76.1 142.7 74.1 144.2 72.0 148.7 73.6 148.7 76.4 147.5 77.7 144.2 78.5ZM45.9 143.7 45.6 140.3 48.9 137.9 50.8 138.5 52.4 142.1 50.6 145.7 46.3 144.7ZM40.0 122.0 41.8 120.5 43.9 124.2 41.9 126.4 39.6 125.3ZM58.1 73.8 58.3 72.1 59.6 70.9 60.8 72.0 60.3 73.4 59.7 74.2ZM150.9 140.4 152.2 140.1 153.5 140.7 152.9 141.7 150.9 142.3ZM134.5 99.1 135.1 96.8 137.7 96.8 138.2 98.6 136.6 100.1ZM27.1 58.0 28.5 57.9 29.7 59.1 28.8 59.8 27.5 60.0 27.2 59.4ZM76.0 116.7 76.2 115.3 77.6 115.6 78.6 116.9 77.8 118.7 76.4 117.8ZM14.3 102.5 13.5 104.1 12.6 103.7 11.2 102.9 11.7 100.7 13.7 100.8ZM116.5 92.6 117.5 91.2 118.7 91.9 118.6 93.6 117.5 94.5 117.0 93.9Z"/>
+      <path fill="#EE6C55" d="M90.1 154.1 87.0 151.5 85.3 144.7 87.2 141.7 91.3 142.1 93.7 145.7 92.9 153.4ZM64.6 133.8 67.1 128.8 75.1 131.9 77.9 137.5 72.9 140.4 67.5 140.1ZM69.8 45.4 72.0 41.3 73.8 41.5 76.8 44.1 76.0 46.8 73.1 47.6ZM132.8 62.3 133.6 60.1 137.3 59.2 138.3 62.0 137.4 63.9 132.5 64.6ZM128.0 43.8 126.2 47.0 121.8 44.6 122.2 40.5 125.8 40.1ZM92.6 72.0 90.9 73.4 89.2 74.8 87.5 74.4 86.6 71.6 87.7 69.3 90.7 69.7ZM21.4 69.0 18.9 70.7 16.1 71.1 14.6 68.4 16.4 63.9 19.0 63.0 22.8 66.0ZM29.1 26.7 28.1 25.3 28.2 23.2 30.2 22.7 30.8 24.6 30.1 26.0ZM147.7 31.6 147.8 33.2 147.2 33.9 146.2 34.1 145.4 32.8 146.0 31.9 147.4 31.2ZM59.2 92.7 60.6 92.0 62.3 91.8 62.5 93.9 61.6 95.1 60.0 94.0Z"/>
+      <path fill="#F4B942" d="M12.9 55.1 8.5 49.2 8.4 44.8 15.4 41.7 19.6 44.8 21.0 50.8 17.2 55.7ZM98.2 76.9 103.5 75.3 105.6 76.9 104.3 85.3 98.3 84.4ZM45.8 35.6 48.1 33.3 54.4 34.2 54.2 36.9 50.6 39.9 46.2 38.8ZM94.0 37.7 94.4 39.1 93.4 40.0 92.6 39.6 92.4 37.9ZM155.3 38.8 153.9 39.5 152.9 38.7 152.7 37.5 154.0 37.2 155.4 37.6ZM42.0 71.1 43.1 70.3 44.5 71.0 43.5 72.3 42.4 72.1ZM1.2 11.9 0.1 13.4 -0.5 13.3 -1.6 11.8 -0.2 10.8 0.6 10.8ZM161.2 11.9 160.1 13.4 159.5 13.3 158.4 11.8 159.8 10.8 160.6 10.8ZM57.2 107.7 58.0 109.2 58.6 110.6 56.6 111.9 54.8 111.0 54.6 110.2 55.0 108.6ZM143.0 116.5 142.4 117.5 140.1 118.5 138.9 117.2 139.3 114.7 142.1 114.9ZM133.5 14.8 132.1 13.9 132.6 12.2 135.0 12.1 135.7 13.4 134.7 15.2ZM37.4 110.2 38.6 111.1 38.4 112.2 37.3 113.2 35.6 112.7 35.5 111.2Z"/>
+      <path fill="#7CC9AE" d="M83.4 98.4 76.7 99.7 76.1 95.3 78.9 87.6 81.2 88.3 89.0 93.2 87.6 96.3ZM123.6 112.3 127.7 105.8 131.6 106.4 133.6 111.2 129.8 116.5ZM92.2 28.6 94.1 20.9 100.0 20.1 105.8 25.3 101.0 31.6ZM33.8 2.3 38.9 -1.4 42.8 0.6 45.3 5.8 40.3 10.3 34.4 7.9ZM33.8 162.3 38.9 158.6 42.8 160.6 45.3 165.8 40.3 170.3 34.4 167.9ZM133.4 -1.8 135.3 -3.7 138.7 -0.6 137.5 3.1 133.5 2.0ZM133.4 158.2 135.3 156.3 138.7 159.4 137.5 163.1 133.5 162.0ZM62.6 14.9 60.8 11.8 60.7 9.4 63.9 7.8 66.1 9.8 67.0 13.8ZM53.3 152.1 55.7 152.2 56.1 154.4 54.7 156.1 51.7 156.0 49.6 154.1ZM116.9 23.9 114.9 22.1 114.9 18.9 117.0 18.7 119.3 19.0 119.7 21.2 118.2 22.9ZM14.8 2.0 13.3 0.0 12.1 -3.7 16.7 -5.4 19.4 -3.8 18.1 0.2ZM14.8 162.0 13.3 160.0 12.1 156.3 16.7 154.6 19.4 156.2 18.1 160.2ZM119.9 150.7 118.2 151.9 117.0 150.9 117.2 150.0 118.4 149.4 119.3 149.6ZM157.8 103.2 158.7 105.1 157.9 106.2 156.6 107.3 155.3 105.8 155.3 104.0ZM111.9 128.4 110.5 126.2 113.2 125.1 114.0 126.0 113.3 128.3ZM6.7 97.4 4.6 98.0 3.1 96.3 3.7 95.2 4.6 94.7 7.1 96.3Z"/>
+    </pattern>
+  </defs>
+
+  <!-- Concept 1: a cut diamond whose lower half turns into gloss lines, like its reflection in a fresh floor -->
+  <symbol id="c1-mark" viewBox="0 0 100 100">
+    <polygon points="6,39 28,17 35,39" style="fill: var(--c1-t2, #7FD6F4)"/>
+    <polygon points="28,17 48,17 35,39" style="fill: var(--c1-t1, #A8E4FA)"/>
+    <polygon points="35,39 48,17 61,39" style="fill: var(--c1-t3, #3FA9EA)"/>
+    <polygon points="48,17 68,17 61,39" style="fill: var(--c1-t2, #7FD6F4)"/>
+    <polygon points="61,39 68,17 90,39" style="fill: var(--c1-t4, #2474E0)"/>
+    <g clip-path="url(#c1-gloss)">
+      <polygon points="6,39 35,39 48,94" style="fill: var(--c1-t4, #2474E0)"/>
+      <polygon points="35,39 61,39 48,94" style="fill: var(--c1-t5, #1D5BD6)"/>
+      <polygon points="61,39 90,39 48,94" style="fill: var(--c1-t6, #163F9F)"/>
+    </g>
+    <path d="M87 2 C87.9 7.6 90.4 10.1 96 11 C90.4 11.9 87.9 14.4 87 20 C86.1 14.4 83.6 11.9 78 11 C83.6 10.1 86.1 7.6 87 2 Z" style="fill: var(--c1-spark, #3FA9EA)"/>
+  </symbol>
+
+  <!-- Concept 2: a diamond cut from a terrazzo / flake floor -->
+  <symbol id="c2-mark" viewBox="0 0 100 100">
+    <path d="M50 4 L95 50 L50 96 L5 50 Z" style="fill: var(--c2-base, #FBF5EA)"/>
+    <g clip-path="url(#c2-clip)">
+      <path style="fill: var(--c2-palm, #1D4D3A)" d="M74.3 56.3 77.8 52.7 83.4 55.3 81.1 60.7 78.0 62.8ZM58.3 34.1 66.1 38.5 64.9 43.9 58.3 45.5 52.9 40.5ZM66.5 72.2 62.6 68.9 64.3 65.9 68.7 64.3 71.2 67.5 70.9 70.6ZM92.2 55.5 91.6 54.6 90.3 51.1 92.8 47.8 94.7 48.7 97.6 52.7 97.1 55.3ZM17.6 36.4 21.0 36.8 22.3 38.7 22.4 40.1 20.4 41.7 17.0 41.3 15.6 39.8ZM69.6 33.3 67.9 34.3 66.4 32.6 67.0 31.6 69.4 31.7ZM39.4 50.8 39.9 48.6 41.5 48.8 42.2 50.0 40.9 51.4ZM46.4 80.9 44.8 81.8 43.0 79.7 43.9 78.2 45.5 77.8 46.9 79.2Z"/>
+      <path style="fill: var(--c2-coral, #EE6C55)" d="M43.8 25.4 48.4 30.4 48.2 34.8 41.6 39.2 38.1 37.0 35.7 28.2ZM18.6 58.3 11.3 58.3 8.4 51.7 11.6 45.8 16.3 47.8 21.8 50.9ZM32.1 55.5 37.3 54.2 40.3 60.1 36.6 62.7 31.7 59.5ZM25.3 67.1 22.1 68.7 17.6 66.3 19.5 63.0 22.4 61.8 26.2 63.7ZM48.7 48.5 46.9 49.2 45.5 47.3 46.1 46.0 47.8 45.8 48.6 47.1Z"/>
+      <path style="fill: var(--c2-sun, #F4B942)" d="M51.5 79.8 57.6 76.4 60.4 74.7 64.0 82.4 61.4 87.8 52.6 85.6ZM48.8 57.4 53.5 54.0 60.6 61.1 56.4 63.8 46.9 63.7ZM51.9 2.4 56.2 5.8 56.1 12.2 49.7 13.6 47.6 6.3ZM67.0 20.5 70.4 20.1 72.1 21.2 71.8 25.3 70.2 26.7 68.3 26.0 66.2 22.9ZM27.0 47.3 27.1 41.6 30.2 40.2 33.7 40.0 34.6 44.0 31.9 47.4ZM41.3 86.2 44.3 86.3 49.4 89.4 45.7 92.3 41.2 90.8ZM37.9 15.2 39.6 15.0 40.8 15.5 40.6 16.8 40.5 17.6 39.1 17.6 37.8 16.1ZM47.5 71.8 46.0 73.3 44.4 71.7 44.4 69.9 46.7 69.2ZM35.3 22.6 33.7 22.5 32.8 22.2 32.6 20.5 34.3 19.8 35.2 19.8 36.2 21.7Z"/>
+      <path style="fill: var(--c2-glass, #7CC9AE)" d="M91.7 41.5 82.5 45.0 77.1 39.0 77.1 35.0 86.0 29.5 92.4 34.7ZM37.2 80.2 30.5 79.9 28.0 71.5 34.4 70.2 39.7 73.9ZM28.6 23.5 32.4 27.8 30.3 31.4 27.8 31.0 25.3 28.1 26.0 25.5ZM55.4 24.4 58.0 21.4 61.2 24.1 60.2 26.7 57.1 27.2ZM62.5 54.6 62.1 53.3 63.1 51.8 64.7 53.0 64.0 54.6ZM71.5 47.9 70.7 51.0 67.7 50.7 66.5 48.8 68.8 47.5Z"/>
+    </g>
+    <path d="M50 4 L95 50 L50 96 L5 50 Z" fill="none" stroke-width="5" stroke-linejoin="round" style="stroke: var(--c2-edge, #1D4D3A)"/>
+  </symbol>
+
+  <!-- Concept 3: the D of DiamondFinish, cut like a gemstone, with a diamond-shaped window -->
+  <symbol id="c3-mark" viewBox="0 0 100 100">
+    <polygon points="14,8 52,8 50,27" style="fill: var(--c3-g2, #E0C07A)"/>
+    <polygon points="14,8 50,27 31,50" style="fill: var(--c3-g1, #EDD49A)"/>
+    <polygon points="52,8 76,19 50,27" style="fill: var(--c3-g3, #CCA75E)"/>
+    <polygon points="76,19 69,50 50,27" style="fill: var(--c3-g2, #E0C07A)"/>
+    <polygon points="76,19 90,40 69,50" style="fill: var(--c3-g4, #B89149)"/>
+    <polygon points="90,40 90,60 69,50" style="fill: var(--c3-g3, #CCA75E)"/>
+    <polygon points="90,60 76,81 69,50" style="fill: var(--c3-g5, #9C7738)"/>
+    <polygon points="76,81 50,73 69,50" style="fill: var(--c3-g4, #B89149)"/>
+    <polygon points="76,81 52,92 50,73" style="fill: var(--c3-g6, #7C5C27)"/>
+    <polygon points="52,92 14,92 50,73" style="fill: var(--c3-g5, #9C7738)"/>
+    <polygon points="14,92 31,50 50,73" style="fill: var(--c3-g4, #B89149)"/>
+    <polygon points="14,92 14,8 31,50" style="fill: var(--c3-g3, #CCA75E)"/>
+  </symbol>
+
+  <!-- Lockups (mark + wordmark). Each outer <svg> uses viewBox "0 0 W H" matching the symbol's size. -->
+  <symbol id="c1-lockup" viewBox="6 1 492 113">
+    <use href="#c1-mark" x="0" y="0" width="120" height="120"/>
+    <text x="126" y="74" font-family="Jost" font-weight="600" font-size="60" letter-spacing="-1"><tspan style="fill: var(--c1-word, #0C1A2E)">Diamond</tspan><tspan font-weight="300" style="fill: var(--c1-fin, #1D5BD6)">Finish</tspan></text>
+    <text x="131" y="101" font-family="Jost" font-weight="500" font-size="13.5" letter-spacing="4.7" style="fill: var(--c1-sub, #5A6B82)">EPOXY FLOOR COATINGS · FLORIDA</text>
+  </symbol>
+
+  <symbol id="c2-lockup" viewBox="2 1 572 118">
+    <use href="#c2-mark" x="0" y="0" width="120" height="120"/>
+    <text x="128" y="71" font-family="Fraunces" font-weight="800" font-size="62" letter-spacing="-1.2" style="font-variation-settings: 'SOFT' 100, 'WONK' 0; fill: var(--c2-word, #1D4D3A)">Diamond <tspan font-style="italic" font-weight="600" style="fill: var(--c2-fin, #E0604A)">Finish</tspan></text>
+    <text x="131" y="99" font-family="Inter" font-weight="600" font-size="13" letter-spacing="7.3" style="fill: var(--c2-sub, #3F7A62)">EPOXY FLOOR COATINGS · FLORIDA</text>
+  </symbol>
+
+  <symbol id="c3-lockup" viewBox="0 0 470 120">
+    <use href="#c3-mark" x="0" y="0" width="120" height="120"/>
+    <text x="126" y="63" font-family="Syncopate" font-weight="700" font-size="42" letter-spacing="1" style="fill: var(--c3-word, #0F0F11)">DIAMOND</text>
+    <g style="fill: var(--c3-rule, #A8813A)">
+      <rect x="129" y="83" width="62" height="2"/>
+      <rect x="345" y="83" width="62" height="2"/>
+    </g>
+    <text x="204.5" y="90" font-family="Syncopate" font-weight="400" font-size="17" letter-spacing="12" style="fill: var(--c3-fin, #A8813A)">FINISH</text>
+  </symbol>
+</svg>
+<!-- DEFS END -->
+
+<main class="wrap">
+  <header class="sheet-head">
+    <div class="kicker">Brand exploration · Round 1</div>
+    <h1>DiamondFinish — logo concepts</h1>
+    <p class="lede">Three directions for a Florida epoxy flooring company, each with a palette sampled from the logo that carries straight into the website. Every mark is vector, holds up at favicon size, and works on light and dark backgrounds.</p>
+  </header>
+
+  <!-- ===================== Concept 1 ===================== -->
+  <section class="concept" id="concept-1">
+    <header class="concept-head">
+      <span class="num">01</span>
+      <h2>Mirror Gloss</h2>
+      <span class="tags">Modern · premium · clean</span>
+      <p>A cut diamond whose lower half dissolves into gloss lines, like its reflection in a freshly coated floor. That mirror shine is exactly what customers are paying for. The geometric wordmark and cool sapphire-and-ice palette feel precise and high-end without being flashy. On the site, the reflection comes to life as a real glossy floor that the hero stands on.</p>
+    </header>
+    <div class="grid">
+      <figure class="tile t-main"><span class="cap">Primary logo</span>
+        <svg class="lockup" viewBox="0 0 492 113" role="img" aria-label="DiamondFinish, concept 1"><use href="#c1-lockup"/></svg>
+      </figure>
+      <figure class="tile t-dark dark" style="background:#0C1A2E; --c1-t1:#E4F9FF; --c1-t2:#9FE5F8; --c1-t3:#5CC3F1; --c1-t4:#3D8CF2; --c1-t5:#2F6FEA; --c1-t6:#2253C6; --c1-spark:#7FDCF6; --c1-word:#fff; --c1-fin:#7FDCF6; --c1-sub:#8FA6C3"><span class="cap">On dark</span>
+        <svg class="lockup" viewBox="0 0 492 113" role="img" aria-label="Concept 1 on dark"><use href="#c1-lockup"/></svg>
+      </figure>
+      <figure class="tile t-icons"><span class="cap">Icon · social · favicon</span>
+        <div class="appicon" style="background:#0C1A2E; --c1-t1:#E4F9FF; --c1-t2:#9FE5F8; --c1-t3:#5CC3F1; --c1-t4:#3D8CF2; --c1-t5:#2F6FEA; --c1-t6:#2253C6; --c1-spark:#7FDCF6"><svg viewBox="0 0 100 100"><use href="#c1-mark"/></svg></div>
+        <div class="avatar" style="background:#EDF5FB"><svg viewBox="0 0 100 100"><use href="#c1-mark"/></svg></div>
+        <div class="favs">
+          <div class="tab"><svg viewBox="0 0 100 100"><use href="#c1-mark"/></svg>DiamondFinish</div>
+          <div class="favsizes">
+            <div><svg width="48" height="48" viewBox="0 0 100 100"><use href="#c1-mark"/></svg><small>48</small></div>
+            <div><svg width="32" height="32" viewBox="0 0 100 100"><use href="#c1-mark"/></svg><small>32</small></div>
+            <div><svg width="16" height="16" viewBox="0 0 100 100"><use href="#c1-mark"/></svg><small>16</small></div>
+          </div>
+        </div>
+      </figure>
+      <div class="tile t-palette"><span class="cap">Palette &amp; type</span>
+        <div class="swatches">
+          <div class="sw" style="--c:#0C1A2E"><i></i><div><b>Ink</b><code>#0C1A2E</code><em>Text, dark sections</em></div></div>
+          <div class="sw" style="--c:#1D5BD6"><i></i><div><b>Sapphire</b><code>#1D5BD6</code><em>Brand, buttons</em></div></div>
+          <div class="sw" style="--c:#7FDCF6"><i></i><div><b>Ice</b><code>#7FDCF6</code><em>Sparkle, accents on dark</em></div></div>
+          <div class="sw" style="--c:#C7D2DE"><i></i><div><b>Silver</b><code>#C7D2DE</code><em>Borders, dividers</em></div></div>
+          <div class="sw" style="--c:#EDF5FB"><i></i><div><b>Frost</b><code>#EDF5FB</code><em>Light sections</em></div></div>
+        </div>
+        <div class="type"><span><b>Headings:</b> Jost SemiBold</span><span><b>Body:</b> Inter</span></div>
+      </div>
+      <div class="tile t-site"><span class="cap">How it carries into the website</span>
+        <div class="mock mock-c1">
+          <div class="mock-chrome"><i></i><i></i><i></i><span>diamondfinishfl.com</span></div>
+          <div class="mock-nav">
+            <svg class="mock-logo" viewBox="0 0 492 113" aria-hidden="true"><use href="#c1-lockup"/></svg>
+            <div class="mock-links"><span>Services</span><span>Metallic</span><span>Gallery</span><span>Reviews</span></div>
+            <span class="mock-btn">Free Estimate</span>
+          </div>
+          <div class="mock-hero">
+            <svg class="mock-sparkles" viewBox="0 0 400 200" aria-hidden="true">
+              <defs><linearGradient id="c1-spk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7FDCF6"/><stop offset="1" stop-color="#1D5BD6"/></linearGradient></defs>
+              <g fill="url(#c1-spk)">
+                <path d="M300 30C303 48.66 311.34 57 330 60C311.34 63 303 71.34 300 90C297 71.34 288.66 63 270 60C288.66 57 297 48.66 300 30Z"/>
+                <path d="M356 105C357.3 113.09 360.91 116.7 369 118C360.91 119.3 357.3 122.91 356 131C354.7 122.91 351.09 119.3 343 118C351.09 116.7 354.7 113.09 356 105Z" opacity=".7"/>
+                <path d="M236 114C236.8 118.98 238.98 121.2 244 122C238.98 122.8 236.8 125.02 236 130C235.2 125.02 233.02 122.8 228 122C233.02 121.2 235.2 118.98 236 114Z" opacity=".55"/>
+              </g>
+            </svg>
+            <div>
+              <span class="mock-eyebrow">Florida epoxy floor coatings</span>
+              <h3>Floors that shine like <em>diamonds.</em></h3>
+              <p>Garage, patio and commercial floors, ground with diamond tooling and sealed in a high-gloss coat that won't yellow in the Florida sun.</p>
+              <div class="mock-ctas"><span class="mock-btn">Get a Free Estimate</span><span class="mock-btn ghost">(555) 555-0123</span></div>
+            </div>
+            <div class="mock-svcs">
+              <div class="mock-svc"><b></b>Garage Floors</div>
+              <div class="mock-svc"><b></b>Metallic Epoxy</div>
+              <div class="mock-svc"><b></b>Flake Floors</div>
+              <div class="mock-svc"><b></b>Pool Decks</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Concept 2 ===================== -->
+  <section class="concept" id="concept-2">
+    <header class="concept-head">
+      <span class="num">02</span>
+      <h2>Florida Terrazzo</h2>
+      <span class="tags">Local · warm · one of a kind</span>
+      <p>A diamond cut from a chip floor, the speckled finish that goes into garages, lanais and pool decks all over the state, in colors borrowed from old-Florida terrazzo. Every version of the logo is a small sample of the product. The soft serif and the palm, coral and sunshine palette feel warm and local, and nothing like the black-and-chrome epoxy crowd.</p>
+    </header>
+    <div class="grid">
+      <figure class="tile t-main"><span class="cap">Primary logo</span>
+        <svg class="lockup" viewBox="0 0 572 118" role="img" aria-label="Diamond Finish, concept 2"><use href="#c2-lockup"/></svg>
+      </figure>
+      <figure class="tile t-dark dark" style="background:#1D4D3A; --c2-edge:#FBF5EA; --c2-word:#FBF5EA; --c2-fin:#F58B75; --c2-sub:#9ED8C0"><span class="cap">On dark</span>
+        <svg class="lockup" viewBox="0 0 572 118" role="img" aria-label="Concept 2 on dark"><use href="#c2-lockup"/></svg>
+      </figure>
+      <figure class="tile t-icons"><span class="cap">Icon · social · favicon</span>
+        <div class="appicon" style="background:#1D4D3A; --c2-edge:#FBF5EA"><svg viewBox="0 0 100 100"><use href="#c2-mark"/></svg></div>
+        <div class="avatar" style="background:#FBF5EA"><svg viewBox="0 0 100 100"><use href="#c2-mark"/></svg></div>
+        <div class="favs">
+          <div class="tab"><svg viewBox="0 0 100 100"><use href="#c2-mark"/></svg>DiamondFinish</div>
+          <div class="favsizes">
+            <div><svg width="48" height="48" viewBox="0 0 100 100"><use href="#c2-mark"/></svg><small>48</small></div>
+            <div><svg width="32" height="32" viewBox="0 0 100 100"><use href="#c2-mark"/></svg><small>32</small></div>
+            <div><svg width="16" height="16" viewBox="0 0 100 100"><use href="#c2-mark"/></svg><small>16</small></div>
+          </div>
+        </div>
+      </figure>
+      <div class="tile t-palette"><span class="cap">Palette &amp; type</span>
+        <div class="swatches">
+          <div class="sw" style="--c:#1D4D3A"><i></i><div><b>Palm</b><code>#1D4D3A</code><em>Text, dark sections</em></div></div>
+          <div class="sw" style="--c:#EE6C55"><i></i><div><b>Coral</b><code>#EE6C55</code><em>Brand, buttons</em></div></div>
+          <div class="sw" style="--c:#F4B942"><i></i><div><b>Sunshine</b><code>#F4B942</code><em>Highlights, badges</em></div></div>
+          <div class="sw" style="--c:#7CC9AE"><i></i><div><b>Sea Glass</b><code>#7CC9AE</code><em>Soft accents</em></div></div>
+          <div class="sw" style="--c:#FBF5EA"><i></i><div><b>Shell</b><code>#FBF5EA</code><em>Light sections</em></div></div>
+        </div>
+        <div class="type"><span><b>Headings:</b> Fraunces Soft ExtraBold</span><span><b>Accent:</b> Fraunces Italic</span><span><b>Body:</b> Inter</span></div>
+      </div>
+      <div class="tile t-site"><span class="cap">How it carries into the website</span>
+        <div class="mock mock-c2">
+          <div class="mock-chrome"><i></i><i></i><i></i><span>diamondfinishfl.com</span></div>
+          <div class="mock-nav">
+            <svg class="mock-logo" viewBox="0 0 572 118" aria-hidden="true"><use href="#c2-lockup"/></svg>
+            <div class="mock-links"><span>Services</span><span>Terrazzo</span><span>Gallery</span><span>Reviews</span></div>
+            <span class="mock-btn">Free Quote</span>
+          </div>
+          <div class="mock-hero">
+            <svg class="mock-tz" viewBox="0 0 1000 420" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+              <defs>
+                <linearGradient id="c2-fade" x1="0" y1="0" x2="1" y2="0"><stop offset=".3" stop-color="#fff" stop-opacity="0"/><stop offset=".8" stop-color="#fff"/></linearGradient>
+                <mask id="c2-mask"><rect width="1000" height="420" fill="url(#c2-fade)"/></mask>
+              </defs>
+              <rect width="1000" height="420" fill="url(#c2-terrazzo)" mask="url(#c2-mask)" opacity=".3"/>
+            </svg>
+            <div>
+              <span class="mock-eyebrow">Made for Florida living</span>
+              <h3>Floors with a <em>finish</em><br> you'll love.</h3>
+              <p>Flake, terrazzo and quartz floors for garages, lanais and pool decks, laid by a local crew and built for sun, salt and humidity.</p>
+              <div class="mock-ctas"><span class="mock-btn">Get a Free Quote</span><span class="mock-btn ghost">(555) 555-0123</span></div>
+            </div>
+            <div class="mock-svcs">
+              <div class="mock-svc"><b></b>Flake Garages</div>
+              <div class="mock-svc"><b></b>Lanais &amp; Patios</div>
+              <div class="mock-svc"><b></b>Pool Decks</div>
+              <div class="mock-svc"><b></b>Epoxy Terrazzo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Concept 3 ===================== -->
+  <section class="concept" id="concept-3">
+    <header class="concept-head">
+      <span class="num">03</span>
+      <h2>Black Diamond</h2>
+      <span class="tags">Bold · luxury · showroom</span>
+      <p>The D of DiamondFinish, cut like a gemstone, with a diamond-shaped window at its heart. Champagne-gold facets on black catch the light the way a metallic epoxy floor does. Wide, confident capitals feel like a luxury car badge, which suits the people who want a showroom garage. The premium, high-ticket option of the three.</p>
+    </header>
+    <div class="grid">
+      <figure class="tile t-main"><span class="cap">Primary logo</span>
+        <svg class="lockup" viewBox="0 0 470 120" role="img" aria-label="Diamond Finish, concept 3"><use href="#c3-lockup"/></svg>
+      </figure>
+      <figure class="tile t-dark dark" style="background:#0F0F11; --c3-g1:#FBF0CD; --c3-g2:#F0D796; --c3-g3:#DDBD72; --c3-g4:#C9A457; --c3-g5:#AD8840; --c3-g6:#8C6B2E; --c3-word:#fff; --c3-fin:#D9B96E; --c3-rule:#D9B96E"><span class="cap">On dark</span>
+        <svg class="lockup" viewBox="0 0 470 120" role="img" aria-label="Concept 3 on dark"><use href="#c3-lockup"/></svg>
+      </figure>
+      <figure class="tile t-icons"><span class="cap">Icon · social · favicon</span>
+        <div class="appicon" style="background:#0F0F11; --c3-g1:#FBF0CD; --c3-g2:#F0D796; --c3-g3:#DDBD72; --c3-g4:#C9A457; --c3-g5:#AD8840; --c3-g6:#8C6B2E"><svg viewBox="0 0 100 100"><use href="#c3-mark"/></svg></div>
+        <div class="avatar" style="background:#F5F1E8"><svg viewBox="0 0 100 100"><use href="#c3-mark"/></svg></div>
+        <div class="favs">
+          <div class="tab"><svg viewBox="0 0 100 100"><use href="#c3-mark"/></svg>DiamondFinish</div>
+          <div class="favsizes">
+            <div><svg width="48" height="48" viewBox="0 0 100 100"><use href="#c3-mark"/></svg><small>48</small></div>
+            <div><svg width="32" height="32" viewBox="0 0 100 100"><use href="#c3-mark"/></svg><small>32</small></div>
+            <div><svg width="16" height="16" viewBox="0 0 100 100"><use href="#c3-mark"/></svg><small>16</small></div>
+          </div>
+        </div>
+      </figure>
+      <div class="tile t-palette"><span class="cap">Palette &amp; type</span>
+        <div class="swatches">
+          <div class="sw" style="--c:#0F0F11"><i></i><div><b>Onyx</b><code>#0F0F11</code><em>Hero, dark sections</em></div></div>
+          <div class="sw" style="--c:#D9B96E"><i></i><div><b>Champagne</b><code>#D9B96E</code><em>Brand, buttons</em></div></div>
+          <div class="sw" style="--c:#A8813A"><i></i><div><b>Bronze</b><code>#A8813A</code><em>Accents on light</em></div></div>
+          <div class="sw" style="--c:#2A2A2F"><i></i><div><b>Graphite</b><code>#2A2A2F</code><em>Cards on dark</em></div></div>
+          <div class="sw" style="--c:#F5F1E8"><i></i><div><b>Pearl</b><code>#F5F1E8</code><em>Light sections</em></div></div>
+        </div>
+        <div class="type"><span><b>Headings:</b> Syncopate Bold</span><span><b>Body:</b> Inter</span></div>
+      </div>
+      <div class="tile t-site"><span class="cap">How it carries into the website</span>
+        <div class="mock mock-c3">
+          <div class="mock-chrome"><i></i><i></i><i></i><span>diamondfinishfl.com</span></div>
+          <div class="mock-nav">
+            <svg class="mock-logo" viewBox="0 0 470 120" aria-hidden="true"><use href="#c3-lockup"/></svg>
+            <div class="mock-links"><span>Services</span><span>Metallic</span><span>Showroom</span><span>Reviews</span></div>
+            <span class="mock-btn">Book a Consultation</span>
+          </div>
+          <div class="mock-hero">
+            <svg class="mock-swirl" viewBox="0 0 1000 420" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+              <defs>
+                <linearGradient id="c3-band" x1="0" y1="1" x2="1" y2="0">
+                  <stop offset="0" stop-color="#8C6B2E" stop-opacity="0"/>
+                  <stop offset=".45" stop-color="#D9B96E" stop-opacity=".5"/>
+                  <stop offset=".7" stop-color="#F6E3A8" stop-opacity=".65"/>
+                  <stop offset="1" stop-color="#8C6B2E" stop-opacity=".2"/>
+                </linearGradient>
+                <linearGradient id="c3-vein" x1="0" y1="1" x2="1" y2="0">
+                  <stop offset="0" stop-color="#FBF0CD" stop-opacity="0"/>
+                  <stop offset=".5" stop-color="#FBF0CD" stop-opacity=".9"/>
+                  <stop offset="1" stop-color="#FBF0CD" stop-opacity=".3"/>
+                </linearGradient>
+                <filter id="c3-blur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="10"/></filter>
+              </defs>
+              <g fill="none" stroke-linecap="round">
+                <path filter="url(#c3-blur)" stroke="url(#c3-band)" stroke-width="120" d="M430 520 C560 380 640 430 730 300 S880 80 1060 90"/>
+                <path filter="url(#c3-blur)" stroke="#6B5122" stroke-opacity=".55" stroke-width="54" d="M520 540 C640 420 720 470 810 350 S950 170 1080 190"/>
+                <path stroke="url(#c3-vein)" stroke-width="2.5" d="M440 500 C570 370 650 420 740 290 S890 85 1060 95"/>
+                <path stroke="url(#c3-vein)" stroke-width="1.4" d="M470 520 C600 395 690 440 775 318 S920 120 1070 135"/>
+                <path stroke="url(#c3-vein)" stroke-width="1" d="M560 540 C680 430 760 480 845 360 S975 200 1080 215"/>
+              </g>
+            </svg>
+            <div>
+              <span class="mock-eyebrow">Luxury epoxy floors · Florida</span>
+              <h3>The showroom floor. <em>At home.</em></h3>
+              <p>Hand-poured metallic and high-gloss floors for garages, homes and showrooms. No two are ever the same.</p>
+              <div class="mock-ctas"><span class="mock-btn">Book a Consultation</span><span class="mock-btn ghost">(555) 555-0123</span></div>
+            </div>
+            <div class="mock-svcs">
+              <div class="mock-svc"><b></b>Metallic Epoxy</div>
+              <div class="mock-svc"><b></b>Showroom Garages</div>
+              <div class="mock-svc"><b></b>Luxury Interiors</div>
+              <div class="mock-svc"><b></b>Commercial</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="sheet-foot">
+    <h2>Next step</h2>
+    <p>Pick a direction, or mix and match (for example, the mark from 03 with the palette from 01). The chosen logo then gets refined and exported as final SVG/PNG files and a favicon set before the site build starts.</p>
+  </footer>
+</main>
+</body>
+</html>
