@@ -187,7 +187,7 @@
     const phone = form.elements.phone;
     const zip = form.elements.zip;
 
-    // Format US numbers as the user types: (407) 555-0148
+    // Format US numbers as the user types: (561) 563-7724
     phone.addEventListener("input", () => {
       const d = phone.value.replace(/\D/g, "").replace(/^1/, "").slice(0, 10);
       phone.value = d.length > 6 ? `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}`

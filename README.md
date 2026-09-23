@@ -2,6 +2,8 @@
 
 Marketing website for a Florida epoxy flooring company, built as a portfolio piece: logo, brand palette and a one-page site. Plain HTML, CSS and JavaScript, no build step and no dependencies.
 
+Live at **[diamondfinish.live](https://diamondfinish.live)**, hosted on Netlify.
+
 ![DiamondFinish](images/og-image.jpg)
 
 ## The brand
@@ -39,6 +41,7 @@ css/styles.css      tokens → base → layout → components → sections
 js/main.js          mobile menu, scroll reveal, active nav link, before/after board, estimate form
 images/             logo, favicons, social share image, floor textures
 brand/              logo concept sheet from the exploration round
+netlify.toml        Netlify config: publish the root as-is, security headers
 ```
 
 The nav links jump to sections on the one page; there are no separate subpages.
@@ -47,4 +50,4 @@ The before/after board in the hero works with a mouse, touch or the keyboard (ar
 
 ## About the content
 
-The business name is real; everything else is placeholder copy for the demo. The phone number, email, reviews, ratings, job counts, warranty terms and claims such as "licensed & insured" are invented and should be replaced before this is used as a live business site. The estimate form validates and shows a confirmation, but sends nothing: there's a marked spot in `js/main.js` for connecting a form service.
+The business name and phone number are real; everything else is placeholder copy for the demo. The email, reviews, ratings, job counts, warranty terms and claims such as "licensed & insured" are invented and should be replaced before this is used as a live business site. The estimate form validates and shows a confirmation, but sends nothing: there's a marked spot in `js/main.js` for connecting a form service.
